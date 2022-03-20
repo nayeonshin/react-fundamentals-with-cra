@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const [counter, setCounter] = useState(0);
-
   const onClick = () => setCounter((previous) => previous + 1);
 
-  console.log("Call an API");
+  console.log("I run all the time");
+
+  useEffect(() => {
+    console.log("Call the API...");
+  }, []);
 
   return (
     <div>
