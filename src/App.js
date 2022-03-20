@@ -17,7 +17,7 @@ function App() {
     console.log("I run when 'counter' changes.");
   }, [counter]);
   useEffect(() => {
-    console.log("I run when 'query' & 'counter' change.");
+    console.log("I run when 'query' and/or 'counter' change.");
   }, [query, counter]);
 
   return (
