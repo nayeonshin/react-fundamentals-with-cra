@@ -1,35 +1,22 @@
 import { useEffect, useState } from "react";
 
-function App() {
-  const [counter, setCounter] = useState(0);
-  const [query, setQuery] = useState("");
-
-  const onClick = () => setCounter((previous) => previous + 1);
-  const onChange = (event) => setQuery(event.target.value);
-
+function Hello() {
   useEffect(() => {
-    console.log("I run only once.");
+    console.log("Created :)");
+    return () => console.log("Bye :(");
   }, []);
-  useEffect(() => {
-    console.log("I run when 'query' changes.");
-  }, [query]);
-  useEffect(() => {
-    console.log("I run when 'counter' changes.");
-  }, [counter]);
-  useEffect(() => {
-    console.log("I run when 'query' and/or 'counter' change.");
-  }, [query, counter]);
+
+  return <h1>Hello</h1>;
+}
+
+function App() {
+  const [isShowing, setIsShowing] = useState(false);
+  const onClick = () => setIsShowing((previous) => !previous);
 
   return (
     <div>
-      <input
-        onChange={onChange}
-        placeholder="Search here..."
-        type="text"
-        value={query}
-      />
-      <h1>{counter}</h1>
-      <button onClick={onClick}>Click me</button>
+      {isShowing ? <Hello /> : null}
+      <button onClick={onClick}>{isShowing ? "Hide" : "Show"}</button>
     </div>
   );
 }
